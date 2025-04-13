@@ -1,6 +1,15 @@
 const express = require('express');
 const axios = require('axios')
 const app = express();
+app.use((req, res, next) => {
+    console.log('Request URL:', req.path);
+    next();
+    });
+    
+app.use((req, res, next) => {
+    console.log('Time:', Date.now())
+    next()
+  })
 app.get('/', (req, res) => {
     console.log(req);
     res.send({message: 'Hello World'});
